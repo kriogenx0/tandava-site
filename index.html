@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tandava — Create / Destroy</title>
+  <meta name="description" content="Tandava — post-hardcore from San Francisco, California. New album coming soon.">
+  <meta name="theme-color" content="#060608">
+  <meta property="og:title" content="Tandava">
+  <meta property="og:description" content="Post-hardcore from San Francisco, California. New album coming soon.">
+  <meta property="og:image" content="assets/what-weve-become.jpg">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a class="nav__mark" href="#top" aria-label="Tandava — home">
+      <svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg>
+      <span>Tandava</span>
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav__links" id="nav-links" aria-label="Sections">
+      <a href="#news">News</a>
+      <a href="#music">Music</a>
+      <a href="#photos">Photos</a>
+      <a href="#shows">Shows</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ───────────── Hero ───────────── -->
+    <section class="hero">
+      <svg class="hero__tri" viewBox="0 0 240 208" aria-hidden="true"><path d="M120 2 238 206H2Z"/></svg>
+      <h1 class="hero__name">Tandava</h1>
+      <p class="hero__tag">Create <span aria-hidden="true">/</span> Destroy</p>
+      <p class="hero__meta">Post-hardcore &middot; San Francisco, California</p>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#music">Listen</a>
+        <a class="btn" href="#news">New album</a>
+      </div>
+      <a class="hero__down" href="#news" aria-label="Scroll to news">
+        <svg class="tri tri--down" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg>
+      </a>
+    </section>
+
+    <!-- ───────────── News ───────────── -->
+    <section class="section" id="news">
+      <h2 class="label">News</h2>
+
+      <article class="post">
+        <div class="post__art" aria-hidden="true">
+          <svg viewBox="0 0 240 208"><path d="M120 2 238 206H2Z"/><path d="M120 206 61 104h118Z"/></svg>
+          <span>Artwork soon</span>
+        </div>
+        <div class="post__body">
+          <p class="post__date"><time datetime="2026-10-01">October 1, 2026</time> &middot; Announcement</p>
+          <h3 class="post__title">The new album is coming.</h3>
+          <p>We've spent a long time building these songs up and tearing them back down. What's left is the heaviest, quietest, most honest thing the four of us have made.</p>
+          <p>Title, artwork and a release date are next. Until then, turn the old one up — and follow us on Bandcamp so you hear the first song before anyone else.</p>
+          <p class="post__sign">— Martyna, Alex, Kevin, Mikey</p>
+          <a class="btn" href="https://tandavacult.bandcamp.com/follow_me" target="_blank" rel="noopener">Follow on Bandcamp</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ───────────── Music ───────────── -->
+    <section class="section" id="music">
+      <h2 class="label">Music</h2>
+
+      <div class="release">
+        <a class="release__cover" href="https://tandavacult.bandcamp.com/album/what-weve-become" target="_blank" rel="noopener">
+          <img src="assets/what-weve-become.jpg" width="1200" height="1200" alt="What We've Become cover: a black-and-white sky with a thin outlined triangle above the band name">
+        </a>
+        <div class="release__info">
+          <p class="release__meta">Released May 2017</p>
+          <h3 class="release__title">What We've Become</h3>
+          <ol class="tracks">
+            <li><span>The Darker Path</span><span class="tracks__time">6:04</span></li>
+          </ol>
+          <iframe class="release__player" title="What We've Become — Bandcamp player" loading="lazy"
+            src="https://bandcamp.com/EmbeddedPlayer/album=1566449103/size=large/bgcol=333333/linkcol=ffffff/tracklist=false/artwork=none/transparent=true/" seamless></iframe>
+          <div class="release__actions">
+            <a class="btn" href="https://tandavacult.bandcamp.com/album/what-weve-become" target="_blank" rel="noopener">Open on Bandcamp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── Photos ─────────────
+         To add a photo, put the file in assets/photos/ and replace a
+         placeholder <div class="photo__empty">…</div> with:
+           <img src="assets/photos/your-file.jpg" alt="Describe the photo" loading="lazy">
+         and set the caption in <figcaption> (photo credit, venue, year).
+    -->
+    <section class="section" id="photos">
+      <h2 class="label">Photos</h2>
+
+      <div class="photos">
+        <figure class="photo photo--wide">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 01</span></div>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="photo">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 02</span></div>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="photo">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 03</span></div>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="photo">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 04</span></div>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="photo">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 05</span></div>
+          <figcaption></figcaption>
+        </figure>
+        <figure class="photo photo--wide">
+          <div class="photo__empty"><svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg><span>Photo 06</span></div>
+          <figcaption></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ───────────── Shows ─────────────
+         To add a show, replace the .shows__none paragraph with a list:
+           <ul class="shows">
+             <li>
+               <time datetime="2026-11-14">Nov 14</time>
+               <span class="shows__venue">Venue name</span>
+               <span class="shows__city">City, ST</span>
+               <a class="btn" href="https://ticket-link">Tickets</a>
+             </li>
+           </ul>
+    -->
+    <section class="section" id="shows">
+      <h2 class="label">Shows</h2>
+      <p class="shows__none">No dates announced yet. Release shows will be posted here first.</p>
+    </section>
+
+    <!-- ───────────── About ───────────── -->
+    <section class="section about" id="about">
+      <h2 class="label">About</h2>
+      <p class="about__text">Tandava is Martyna, Alex, Kevin and Mikey. Post-hardcore from San Francisco, California.</p>
+    </section>
+
+  </main>
+
+  <!-- ───────────── Contact / footer ─────────────
+       Instagram, YouTube and Spotify have no address yet: add href="…" to
+       each <a> and remove the "is-pending" class to switch them on.
+  -->
+  <footer class="footer" id="contact">
+    <h2 class="label">Contact</h2>
+    <p class="footer__lead">Booking, press and everything else:</p>
+    <a class="footer__contact" href="https://tandavacult.bandcamp.com/" target="_blank" rel="noopener">Message us on Bandcamp</a>
+
+    <ul class="social">
+      <li><a href="https://tandavacult.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a></li>
+      <li><a class="is-pending">Instagram</a></li>
+      <li><a class="is-pending">YouTube</a></li>
+      <li><a class="is-pending">Spotify</a></li>
+    </ul>
+
+    <p class="footer__fine">
+      <svg class="tri" viewBox="0 0 24 21" aria-hidden="true"><path d="M12 1 23 20H1Z"/></svg>
+      <span>&copy; <span id="year">2026</span> Tandava. All rights reserved.</span>
+    </p>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo">
+    <img alt="">
+    <p></p>
+    <button type="button" class="lightbox__close">Close</button>
+  </dialog>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
