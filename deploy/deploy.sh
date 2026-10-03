@@ -30,6 +30,8 @@ ssh "$SSH_TARGET" "sudo mkdir -p '$REMOTE_DIR' && sudo chown deploy:deploy '$REM
 echo "==> Syncing site files"
 rsync -az --delete \
   "$REPO_DIR/index.html" \
+  "$REPO_DIR/robots.txt" \
+  "$REPO_DIR/sitemap.xml" \
   "$REPO_DIR/css" \
   "$REPO_DIR/js" \
   "$REPO_DIR/assets" \
