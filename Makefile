@@ -1,9 +1,8 @@
 IMAGE := tandava-site
 NAME  := tandava-site
 PORT  ?= 8080
-ADMIN_TARGET := admin@104.131.183.186
 
-.PHONY: build run dev stop logs deploy install-sudoers
+.PHONY: build run dev stop logs
 
 build:
 	docker build -t $(IMAGE) .
@@ -24,19 +23,3 @@ stop:
 
 logs:
 	docker logs -f $(NAME)
-
-# Production deploy: syncs the static files to the server directly (no
-# container there -- see deploy/tandavacult.com.conf) and gets/renews the
-# cert. Safe to re-run any time the site files change.
-#
-# install-sudoers needs admin's interactive sudo password the first time
-# (deploy has no sudo to install its own rule) -- harmless to re-run after,
-# since visudo -c + install just rewrite the same file.
-deploy: install-sudoers
-	./deploy/deploy.sh
-
-install-sudoers:
-	@echo "==> Copying deploy/sudoers.d/tandavacult-com to $(ADMIN_TARGET):/tmp/"
-	scp deploy/sudoers.d/tandavacult-com $(ADMIN_TARGET):/tmp/
-	@echo "==> Installing it as root (needs your admin password)"
-	ssh -t $(ADMIN_TARGET) 'sudo visudo -c -f /tmp/tandavacult-com && sudo install -m 0440 -o root -g root /tmp/tandavacult-com /etc/sudoers.d/tandavacult-com && rm /tmp/tandavacult-com'
