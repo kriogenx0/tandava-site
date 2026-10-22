@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Builds the same Dockerfile Coolify builds, starts it, and checks that the
+  # home page answers.
+  image:
+    name: Build and smoke-test the image
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: docker build -t tandava-site .
+      - name: Serve and check
+        run: |
+          docker run -d --name tandava-site -p 8080:80 tandava-site
+          for i in $(seq 1 20); do
+            curl -fsS -o /dev/null http://localhost:8080/ && exit 0
+            sleep 1
+          done
+          docker logs tandava-site
+          exit 1
+
+  # Production is Coolify (coolify.homecloud.one). Its GitHub App gives it the
+  # repo, but Auto Deploy is off, so this job is the only thing that deploys,
+  # and only after the image check passed on main. Needs the COOLIFY_WEBHOOK
+  # (the resource's deploy URL) and COOLIFY_TOKEN (a Coolify API token with
+  # deploy permission) secrets.
+  deploy:
+    name: Deploy to Coolify
+    needs: image
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Trigger the Coolify deploy
+        env:
+          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
+          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+        run: |
+          curl --fail-with-body -sS -X POST -H "Authorization: Bearer $COOLIFY_TOKEN" "$COOLIFY_WEBHOOK"
