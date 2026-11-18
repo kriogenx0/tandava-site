@@ -2,7 +2,7 @@ IMAGE := tandava-site
 NAME  := tandava-site
 PORT  ?= 8080
 
-.PHONY: build run dev stop logs
+.PHONY: build run dev stop logs rules rules-check
 
 build:
 	docker build -t $(IMAGE) .
@@ -23,3 +23,13 @@ stop:
 
 logs:
 	docker logs -f $(NAME)
+
+##@ Agent rules
+
+AGENT_RULES ?= $(HOME)/Sites/agent-rules
+
+rules: ## Sync shared agent rules from agent-rules into docs/rules/
+	@$(AGENT_RULES)/bin/agent-rules sync "$(CURDIR)"
+
+rules-check: ## Show what `make rules` would change (exit 1 if anything)
+	@$(AGENT_RULES)/bin/agent-rules check "$(CURDIR)"
